@@ -4,11 +4,13 @@
   "description": "kantor wymiany walut",
   "main": "/js/index.js",
   "scripts": {
-    "start": "webpack-dev-server --config webpack.config.js --hot --inline"
+    "start": "webpack-dev-server --config webpack.config.js --hot --inline",
+    "api": "json-server --watch db.json --port 3004"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "firebase": "^5.8.4",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "react-redux": "^6.0.1",
