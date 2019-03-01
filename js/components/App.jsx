@@ -1,37 +1,25 @@
 import React, { Component } from 'react';
 import Main from './Main.jsx';
 import { HashRouter, Route, Switch } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { addUser } from '../actions';
+// import { connect } from 'react-redux';
 
 
 class App extends Component {
-    constructor() {
-        super();
-    } 
-
-    componentWillMount() {
-        // firebase.database().ref('/users/0/').on('value', (snapshot) => {
-        //     const userObj = snapshot.val();
-            
-        //     this.setState({
-        //         users: userObj.id
-        //     })
-        //   });
-
-          this.props.addUser('test', 'test2');
+    componentDidMount() {
+        fetch('http://localhost:3004/users')
+      .then(response => response.json())
+      .then(data => console.log(data));
     }
 
     render() {
         return (
-            // <HashRouter>
-            //     <Switch>
-            //         <Route exact path='/' component={Main} />
-            //         <Route path='/login' component={Main} />
-            //         <Route path='*' component={NotFound} />
-            //     </Switch>
-            // </HashRouter>
-            <h1></h1>
+            <HashRouter>
+                <Switch>
+                    <Route exact path='/' component={Main} />
+                    <Route path='/login' component={Main} />
+                    <Route path='*' component={NotFound} />
+                </Switch>
+            </HashRouter>
         )
     }
 }
@@ -42,9 +30,11 @@ function NotFound() {
     )
 }
 
-export default connect(state => 
-    ({
-        users: state.users
-    }),
-    { addUser }
-)(App);
+export default App;
+
+// export default connect(state => 
+//     ({
+//         users: state.users
+//     }),
+//     { }
+// )(App);

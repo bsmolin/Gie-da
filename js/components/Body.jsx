@@ -11,7 +11,7 @@ import BodyLogIn from './BodyLogIn.jsx';
 
 export default connect(state => 
     ({
-        login: state.login
+        login: state.auth.login
     }),
     {}
 )(Body);

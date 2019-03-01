@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-import changeLoginStatus from '../actions';
+import { changeLoginStatus } from '../actions';
+import store from '../store';
+
 
 class Login extends Component {
     render() {
@@ -10,7 +12,7 @@ class Login extends Component {
         if (this.props.login === true) {
             loginResult = (
                 <div>
-                    Logged in as {this.props.name}
+                    Logged in as Test
                     <NavLink to="/edit"><i className="fas fa-cog"></i></NavLink>
                     <NavLink to="/" onClick={this.logOut}><i className="fas fa-power-off"></i></NavLink>
                 </div>
@@ -25,11 +27,16 @@ class Login extends Component {
     }
 }
 
+const mapStateToProps = (state) => {
+    return {
+      login: state.login
+    };
+  };
+
 
 export default connect(state => 
     ({
-        login: state.login,
-        name: state.name
+        login: state.auth.login
     }),
     {
         changeLoginStatus,

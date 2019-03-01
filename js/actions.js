@@ -3,8 +3,8 @@ export const changeLoginStatus = value => ({
   login: value  
 });
 
-export const addUser = value => ({
-    type: "addUser",
-    login: value,
-    password: value
+export const userActions = value => ({
+  type: "addUser",
+  login: value,
+  password: value
 });
