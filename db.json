@@ -1,9 +1,58 @@
 {
     "users": [
-      { "id": 1, "name": "Adam", "lname": "Kowalski" }
+        {
+            "id": 0,
+            "login": "admin",
+            "password": "test",
+            "name": "Adam",
+            "lname": "Kowalski",
+            "money": 1000,
+            "currencies": {
+                "GBP": 1000,
+                "EUR": 2000,
+                "USD": 3000,
+                "CZK": 50,
+                "PLN": null
+            }
+        },
+        {
+            "id": 1,
+            "login": "adam",
+            "password": "adam",
+            "name": "Admin",
+            "lname": "Adminowaty",
+            "money": 1000,
+            "currencies": {
+                "GBP": 1000,
+                "EUR": 1000,
+                "USD": 1000,
+                "CZK": 1000,
+                "PLN": 1000
+            }
+        }
     ],
-    "comments": [
-      { "id": 1, "body": "some comment", "postId": 1 }
-    ],
-    "profile": { "name": "typicode" }
-  }
+
+    "globalWallet": {
+        "GBP": 10000,
+        "EUR": 10000,
+        "USD": 10000,
+        "CZK": 10000,
+        "PLN": 10000
+    },
+
+    "actualBuyCurrencies": {
+        "GBP": 5.83,
+        "EUR": 4.16,
+        "USD": 3.70,
+        "CZK": 15.31,
+        "PLN": 0.26
+    },
+
+    "actualSellCurrencies": {
+        "GBP": 5.80,
+        "EUR": 4.05,
+        "USD": 3.60,
+        "CZK": 15.25,
+        "PLN": 0.25
+    }
+}

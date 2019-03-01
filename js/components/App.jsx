@@ -2,25 +2,24 @@ import React, { Component } from 'react';
 import Main from './Main.jsx';
 import { HashRouter, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
-import firebase from '../firebase';
+import { addUser } from '../actions';
+
 
 class App extends Component {
     constructor() {
         super();
-
-        this.state = {
-            users: ''
-        }
     } 
 
     componentWillMount() {
-        firebase.database().ref('/users/users/0/').on('value', (snapshot) => {
-            const userObj = snapshot.val();
+        // firebase.database().ref('/users/0/').on('value', (snapshot) => {
+        //     const userObj = snapshot.val();
             
-            this.setState({
-                users: userObj.id
-            })
-          });
+        //     this.setState({
+        //         users: userObj.id
+        //     })
+        //   });
+
+          this.props.addUser('test', 'test2');
     }
 
     render() {
@@ -32,7 +31,7 @@ class App extends Component {
             //         <Route path='*' component={NotFound} />
             //     </Switch>
             // </HashRouter>
-            <h1>{this.state.users}</h1>
+            <h1></h1>
         )
     }
 }
@@ -47,5 +46,5 @@ export default connect(state =>
     ({
         users: state.users
     }),
-    {}
+    { addUser }
 )(App);

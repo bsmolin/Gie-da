@@ -1,10 +1,15 @@
+import { combineReducers } from 'redux'
+
 const initialState = {
     login: false,
     name: "Adam",
-    users: {}
+    users: {
+        login: "",
+        password: ""
+    }
 }
 
-const reducer = (state = initialState, action) => {
+const changeLoginStatus = (state = initialState, action) => {
     switch (action.type) {
         case "changeLoginStatus":
             return {...state, login: action.login}
@@ -14,4 +19,18 @@ const reducer = (state = initialState, action) => {
     }
 }
 
-export default reducer;
+const userActions = (state = initialState, action) => {
+    switch (action.type) {
+        case "addUser":
+            return {...state, users: {login: action.login, password: action.password}}
+
+        default:
+        return state;
+    }
+}
+
+
+export default combineReducers({
+    changeLoginStatus,
+    userActions
+  })

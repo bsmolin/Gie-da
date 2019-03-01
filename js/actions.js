@@ -1,6 +1,10 @@
-const changeLoginStatus = value => ({
+export const changeLoginStatus = value => ({
   type: "changeLoginStatus",
   login: value  
 });
 
-export default changeLoginStatus;
+export const addUser = value => ({
+    type: "addUser",
+    login: value,
+    password: value
+});
