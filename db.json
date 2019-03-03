@@ -29,6 +29,19 @@
                 "CZK": 1000,
                 "PLN": 1000
             }
+        },
+        {
+            "id": 2,
+            "login": "kowal",
+            "password": "test",
+            "name": "Jan",
+            "lname": "Kowalski",
+            "money": 1000,
+            "currencies": {
+                "GBP": 1000,
+                "EUR": 1000,
+                "USD": 1000
+            }
         }
     ],
 
@@ -40,19 +53,31 @@
         "PLN": 10000
     },
 
-    "actualBuyCurrencies": {
-        "GBP": 5.83,
-        "EUR": 4.16,
-        "USD": 3.70,
-        "CZK": 15.31,
-        "PLN": 0.26
-    },
-
-    "actualSellCurrencies": {
-        "GBP": 5.80,
-        "EUR": 4.05,
-        "USD": 3.60,
-        "CZK": 15.25,
-        "PLN": 0.25
-    }
+    "actualCurrencies": [
+        {
+            "id": "GBP",
+            "sell": 5.80,
+            "buy": 5.83
+        },
+        {
+            "id": "EUR",
+            "sell": 4.05,
+            "buy": 4.16
+        },
+        {
+            "id": "USD",
+            "sell": 3.60,
+            "buy": 3.70
+        },
+        {
+            "id": "CZK",
+            "sell": 15.25,
+            "buy": 15.31
+        },
+        {
+            "id": "PLN",
+            "sell": 0.25,
+            "buy": 0.26
+        }        
+    ]
 }

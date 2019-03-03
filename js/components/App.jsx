@@ -1,15 +1,9 @@
 import React, { Component } from 'react';
 import Main from './Main.jsx';
 import { HashRouter, Route, Switch } from 'react-router-dom';
-// import { connect } from 'react-redux';
 
 
 class App extends Component {
-    componentDidMount() {
-        fetch('http://localhost:3004/users')
-      .then(response => response.json())
-      .then(data => console.log(data));
-    }
 
     render() {
         return (
@@ -31,10 +25,3 @@ function NotFound() {
 }
 
 export default App;
-
-// export default connect(state => 
-//     ({
-//         users: state.users
-//     }),
-//     { }
-// )(App);
