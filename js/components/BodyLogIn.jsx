@@ -11,9 +11,12 @@ class BodyLogIn extends Component {
     }
 
     render() {
+        
+        
         return ( 
             <div className="container">
                 <div className="row">
+
                     <div className="col-12 col-md-6">
                         <div className="box-title">
                             <h2>Currencies</h2>
@@ -26,7 +29,7 @@ class BodyLogIn extends Component {
                                 <h3>Unit</h3>
                             </div>
                             <div className="col-3">
-                                <h3>Value</h3>
+                                <h3>Price</h3>
                             </div>
                             <div className="col-3">
                                 <h3>Actions</h3>
@@ -74,7 +77,7 @@ class BodyLogIn extends Component {
     }
 
     updateCurrenciesValues = () => {
-        fetch(`http://localhost:3004/actualCurrencies`)
+        fetch(`http://api.nbp.pl/api/exchangerates/tables/C/`)
         .then(response => response.json())
         .then(data => {
             this.props.updateCurrencies(data);

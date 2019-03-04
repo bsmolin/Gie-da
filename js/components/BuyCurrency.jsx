@@ -1,32 +1,37 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+
 class BuyCurrency extends Component {
     constructor() {
         super();
-
-        this.state = {
-            buyPrice: null
-        }
     }
 
-    componentDidMount() {
-        // setTimeout(() => {
-            // for (let i = 0; i < this.props.actualCurrencies.length; i++) {
-            
-            //     if (this.props.actualCurrencies[i].id == this.props.curr) {
-                    
-            //         this.setState({
-            //             buyPrice: this.props.actualCurrencies[i].buy
-            //         })
-            //     }
-            // } 
-        // }, 1000);
+    passingPrice() {
+        let actualPrice;
+        switch (this.props.curr) {
+            case "GBP":
+            actualPrice = this.props.actualCurrencies.GBP.buy;
+                break;
+            case "EUR":
+            actualPrice = this.props.actualCurrencies.EUR.buy;
+                break;
+            case "USD":
+            actualPrice = this.props.actualCurrencies.USD.buy;
+                break;
+            case "CZK":
+            actualPrice = this.props.actualCurrencies.CZK.buy;
+                break;
+            default:
+                break;
+        }
 
-        
+        return actualPrice;
     }
 
     render() {
+        let price = this.passingPrice();
+        
         return (
             <div className="row box-currencies">
                 <div className="col-3">
@@ -37,7 +42,7 @@ class BuyCurrency extends Component {
                     <p>1</p>
                 </div>
                 <div className="col-3">
-                    {this.state.buyPrice}
+                    {price}
                 </div>
                 <div className="col-3">
                     <button>Buy</button>

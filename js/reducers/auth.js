@@ -1,5 +1,5 @@
 const initialState = {
-    login: true,
+    login: false,
     id: null,
     userLogin: "",
     password: "",
@@ -10,8 +10,7 @@ const initialState = {
         GBP: null,
         EUR: null,
         USD: null,
-        CZK: null,
-        PLN: null
+        CZK: null
     }
 }
 

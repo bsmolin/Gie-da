@@ -19,11 +19,6 @@ const initialState = {
         {
             sell: null,
             buy: null
-        },
-    PLN:
-        {
-            sell: null,
-            buy: null
         }
     }
 }
@@ -35,24 +30,20 @@ const updateCurrencies = (state = initialState, action) => {
                 actualCurrencies: {
                     ...state.actualCurrencies,
                     GBP: {
-                        sell: action.data[0].sell,
-                        buy: action.data[0].buy
+                        sell: action.data[0].rates[6].ask,
+                        buy: action.data[0].rates[6].bid
                     },
                     EUR: {
-                        sell: action.data[1].sell,
-                        buy: action.data[1].buy
+                        sell: action.data[0].rates[3].ask,
+                        buy: action.data[0].rates[3].bid
                     },
                     USD: {
-                        sell: action.data[2].sell,
-                        buy: action.data[2].buy
+                        sell: action.data[0].rates[0].ask,
+                        buy: action.data[0].rates[0].bid
                     },
                     CZK: {
-                        sell: action.data[3].sell,
-                        buy: action.data[3].buy
-                    },
-                    PLN: {
-                        sell: action.data[4].sell,
-                        buy: action.data[4].buy
+                        sell: action.data[0].rates[8].ask,
+                        buy: action.data[0].rates[8].bid
                     }
                 }
             }

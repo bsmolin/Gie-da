@@ -13,11 +13,16 @@ class BodyLogOut extends Component {
             registerMail: "",
             loginName: "",
             loginPassword: "",
-            message: ""
+            message: "",
+            GBP: false,
+            EUR: false,
+            USD: false,
+            CZK: false
         }
     }
 
     render() {
+        let helpThis = this;
 
         return (
             <div className="container">
@@ -27,8 +32,23 @@ class BodyLogOut extends Component {
                             <input type="text" placeholder="name" value={this.state.registerName} onChange={(e) => this.updateState(e,"registerName")}/>
                             <input type="password" placeholder="password" value={this.state.registerPassword} onChange={(e) => this.updateState(e, "registerPassword")} />
                             <input type="text" placeholder="email address" value={this.state.registerMail} onChange={(e) => this.updateState(e, "registerMail")} />
+
+                            <div className="select-curr">
+                                <p>Select currencies u want to have :</p>
+                                <ul>
+                                    {Object.keys(this.props.currencies).map(function(curr, index) {
+                                        return (
+                                            <li key={index}>
+                                                <input type="checkbox" name={curr} value={curr} onChange={() => helpThis.updateState(null, curr)} /> 
+                                                {curr}
+                                            </li>
+                                        )
+                                    })}
+                                </ul>
+                            </div>
+
                             <div>{this.state.message}</div>
-                            <button>Create</button>
+                            <button type="submit" onClick={(e) => this.createAccount(e)}>Create</button>
                             <p className="message">Already registered? <button onClick={this.showLoginPage}>Sign In</button></p>
                         </form>
                         <form className="login-form">
@@ -79,6 +99,34 @@ class BodyLogOut extends Component {
                 })
             }
                 break;
+
+            case "GBP": {
+                this.setState({
+                    GBP: true
+                })
+            }
+                break;
+
+            case "EUR": {
+                this.setState({
+                    EUR: true
+                })
+            }
+                break;
+
+            case "USD": {
+                this.setState({
+                    USD: true
+                })
+            }
+                break;
+
+            case "CZK": {
+                this.setState({
+                    CZK: true
+                })
+            }
+                break;
         
             default:
                 break;
@@ -102,6 +150,18 @@ class BodyLogOut extends Component {
         })        
     }
 
+    createAccount = (e) => {
+        e.preventDefault();
+
+        if (this.createAccountValidation()) {
+            console.log(this.state.registerName, this.state.registerPassword, this.state.registerMail, this.state.GBP, this.state.EUR, this.state.USD, this.state.CZK);
+        }
+    }
+
+    createAccountValidation = () => {
+        return true;
+    }
+
     showLoginPage = () => {
         let loginForm = document.querySelector('form.login-form');
         loginForm.classList.remove('show');
@@ -121,7 +181,8 @@ class BodyLogOut extends Component {
 
 export default connect(state => 
     ({
-        login: state.auth.login
+        login: state.auth.login,
+        currencies: state.auth.currencies,
     }),
     { logIn }
 )(BodyLogOut);

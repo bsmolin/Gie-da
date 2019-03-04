@@ -13,4 +13,24 @@
     button {
         margin: 10px 0;
     }
+
+    .select-curr {
+        p {
+            margin-top: 10px;
+        }
+        
+        ul {
+            list-style: none;
+
+            li {
+                display: inline-flex;
+                justify-content: center;
+                width: 100%;
+
+                input {
+                    margin: 6px 10px 0 0;
+                }
+            }
+        }
+    }
 }
