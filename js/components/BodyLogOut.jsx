@@ -8,16 +8,12 @@ class BodyLogOut extends Component {
         super(props);
 
         this.state = {
-            registerName : "",
+            registerLogin: "",
             registerPassword: "",
-            registerMail: "",
+            registerPassword2: "",
             loginName: "",
             loginPassword: "",
-            message: "",
-            GBP: false,
-            EUR: false,
-            USD: false,
-            CZK: false
+            message: ""
         }
     }
 
@@ -29,11 +25,11 @@ class BodyLogOut extends Component {
                 <div className="login-page">
                     <div className="form">
                         <form className="register-form show">
-                            <input type="text" placeholder="name" value={this.state.registerName} onChange={(e) => this.updateState(e,"registerName")}/>
+                            <input type="text" placeholder="login" value={this.state.registerLogin} onChange={(e) => this.updateState(e,"registerLogin")}/>
                             <input type="password" placeholder="password" value={this.state.registerPassword} onChange={(e) => this.updateState(e, "registerPassword")} />
-                            <input type="text" placeholder="email address" value={this.state.registerMail} onChange={(e) => this.updateState(e, "registerMail")} />
+                            <input type="password" placeholder="password again" value={this.state.registerPassword2} onChange={(e) => this.updateState(e, "registerPassword2")} />
 
-                            <div className="select-curr">
+                            {/* <div className="select-curr">
                                 <p>Select currencies u want to have :</p>
                                 <ul>
                                     {Object.keys(this.props.currencies).map(function(curr, index) {
@@ -45,10 +41,10 @@ class BodyLogOut extends Component {
                                         )
                                     })}
                                 </ul>
-                            </div>
+                            </div> */}
 
                             <div>{this.state.message}</div>
-                            <button type="submit" onClick={(e) => this.createAccount(e)}>Create</button>
+                            <button type="submit" onClick={(e) => this.createAccountValidation(e)}>Create</button>
                             <p className="message">Already registered? <button onClick={this.showLoginPage}>Sign In</button></p>
                         </form>
                         <form className="login-form">
@@ -66,9 +62,9 @@ class BodyLogOut extends Component {
 
     updateState = (e, field) => {
         switch (field) {
-            case "registerName":
+            case "registerLogin":
                 this.setState({
-                    registerName: e.target.value
+                    registerLogin: e.target.value
                 })
                 break;
             
@@ -78,10 +74,10 @@ class BodyLogOut extends Component {
                 })
             }
                 break;
-
-            case "registerMail": {
+            
+            case "registerPassword2": {
                 this.setState({
-                    registerMail: e.target.value
+                    registerPassword2: e.target.value
                 })
             }
                 break;
@@ -96,34 +92,6 @@ class BodyLogOut extends Component {
             case "loginPassword": {
                 this.setState({
                     loginPassword: e.target.value
-                })
-            }
-                break;
-
-            case "GBP": {
-                this.setState({
-                    GBP: true
-                })
-            }
-                break;
-
-            case "EUR": {
-                this.setState({
-                    EUR: true
-                })
-            }
-                break;
-
-            case "USD": {
-                this.setState({
-                    USD: true
-                })
-            }
-                break;
-
-            case "CZK": {
-                this.setState({
-                    CZK: true
                 })
             }
                 break;
@@ -150,16 +118,53 @@ class BodyLogOut extends Component {
         })        
     }
 
-    createAccount = (e) => {
-        e.preventDefault();
+    createAccount = () => {
+        this.setState({
+            message: ""
+        });
 
-        if (this.createAccountValidation()) {
-            console.log(this.state.registerName, this.state.registerPassword, this.state.registerMail, this.state.GBP, this.state.EUR, this.state.USD, this.state.CZK);
-        }
+        console.log('ok');
+
+        fetch("http://localhost:3004/users", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ login: this.state.registerLogin, password: this.state.registerPassword })
+        })
+        .then(
+            this.showLoginPage()
+        )
+
     }
 
-    createAccountValidation = () => {
-        return true;
+    createAccountValidation = (e) => {
+        e.preventDefault();
+
+        let user = true;
+
+        fetch('http://localhost:3004/users')
+        .then(response => response.json())
+        .then(data => {
+
+            data.forEach(element => {
+                if ( element.login == this.state.registerLogin ) {
+                    this.setState({
+                        message: "User with that login already exist!"
+                    });
+                    user = false;
+                } 
+            });
+
+            (user) ? true : false;
+        })
+        .then(sth => {
+            console.log(sth);
+            
+            (user) ? this.createAccount() : null;
+        })
+
+        
     }
 
     showLoginPage = () => {
@@ -182,7 +187,7 @@ class BodyLogOut extends Component {
 export default connect(state => 
     ({
         login: state.auth.login,
-        currencies: state.auth.currencies,
+        currencies: state.auth.currencies
     }),
     { logIn }
 )(BodyLogOut);

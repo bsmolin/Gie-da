@@ -1,75 +1,73 @@
 {
-    "users": [
-        {
-            "id": 0,
-            "login": "admin",
-            "password": "test",
-            "name": "Adam",
-            "lname": "Kowalski",
-            "money": 1000,
-            "currencies": {
-                "GBP": 1000,
-                "EUR": 2000,
-                "USD": 3000,
-                "CZK": 50
-            }
-        },
-        {
-            "id": 1,
-            "login": "adam",
-            "password": "adam",
-            "name": "Admin",
-            "lname": "Adminowaty",
-            "money": 1000,
-            "currencies": {
-                "GBP": 1000,
-                "EUR": 1000,
-                "USD": 1000,
-                "CZK": 1000
-            }
-        },
-        {
-            "id": 2,
-            "login": "kowal",
-            "password": "test",
-            "name": "Jan",
-            "lname": "Kowalski",
-            "money": 1000,
-            "currencies": {
-                "GBP": 1000,
-                "EUR": 1000,
-                "USD": 1000
-            }
-        }
-    ],
-
-    "globalWallet": {
-        "GBP": 10000,
-        "EUR": 10000,
-        "USD": 10000,
-        "CZK": 10000
+  "users": [
+    {
+      "id": 0,
+      "login": "admin",
+      "password": "test",
+      "name": "Adam",
+      "lname": "Kowalski",
+      "money": 1000,
+      "currencies": {
+        "GBP": 1000,
+        "EUR": 2000,
+        "USD": 3000,
+        "CZK": 50
+      }
     },
-
-    "actualCurrencies": [
-        {
-            "id": "GBP",
-            "sell": 5.80,
-            "buy": 5.83
-        },
-        {
-            "id": "EUR",
-            "sell": 4.05,
-            "buy": 4.16
-        },
-        {
-            "id": "USD",
-            "sell": 3.60,
-            "buy": 3.70
-        },
-        {
-            "id": "CZK",
-            "sell": 15.25,
-            "buy": 15.31
-        }      
-    ]
+    {
+      "id": 1,
+      "login": "adam",
+      "password": "adam",
+      "name": "Admin",
+      "lname": "Adminowaty",
+      "money": 1000,
+      "currencies": {
+        "GBP": 1000,
+        "EUR": 1000,
+        "USD": 1000,
+        "CZK": 1000
+      }
+    },
+    {
+      "id": 2,
+      "login": "kowal",
+      "password": "test",
+      "name": "Jan",
+      "lname": "Kowalski",
+      "money": 1000,
+      "currencies": {
+        "GBP": 1000,
+        "EUR": 1000,
+        "USD": 1000
+      }
+    }
+  ],
+  "globalWallet": {
+    "GBP": 10000,
+    "EUR": 10000,
+    "USD": 10000,
+    "CZK": 10000
+  },
+  "actualCurrencies": [
+    {
+      "id": "GBP",
+      "sell": 5.8,
+      "buy": 5.83
+    },
+    {
+      "id": "EUR",
+      "sell": 4.05,
+      "buy": 4.16
+    },
+    {
+      "id": "USD",
+      "sell": 3.6,
+      "buy": 3.7
+    },
+    {
+      "id": "CZK",
+      "sell": 15.25,
+      "buy": 15.31
+    }
+  ]
 }
