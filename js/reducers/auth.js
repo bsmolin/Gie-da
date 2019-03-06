@@ -34,6 +34,46 @@ const auth = (state = initialState, action) => {
                 ...state, 
                 login: false
             }
+
+        case "buyGBP":
+            return {
+                ...state,
+                money: action.money,
+                currencies: {
+                    ...state.currencies,
+                    GBP: action.value
+                }
+            }
+
+        case "buyEUR":
+            return {
+                ...state,
+                money: action.money,
+                currencies: {
+                    ...state.currencies,
+                    EUR: action.value
+                }
+            }
+
+        case "buyUSD":
+            return {
+                ...state,
+                money: action.money,
+                currencies: {
+                    ...state.currencies,
+                    USD: action.value
+                }
+            }
+
+        case "buyCZK":
+            return {
+                ...state,
+                money: action.money,
+                currencies: {
+                    ...state.currencies,
+                    CZK: action.value
+                }
+            }
         
         default:
         return state;

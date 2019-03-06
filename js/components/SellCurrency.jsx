@@ -6,20 +6,26 @@ class SellCurrency extends Component {
         super();
     }
 
-    passingPrice() {
+    passingPrice(condition) {
         let actualPrice;
+        let actualAmount;
+
         switch (this.props.curr) {
             case "GBP":
             actualPrice = this.props.actualCurrencies.GBP.sell;
+            actualAmount = this.props.amount.GBP;
                 break;
             case "EUR":
             actualPrice = this.props.actualCurrencies.EUR.sell;
+            actualAmount = this.props.amount.EUR;
                 break;
             case "USD":
             actualPrice = this.props.actualCurrencies.USD.sell;
+            actualAmount = this.props.amount.USD;
                 break;
             case "CZK":
             actualPrice = this.props.actualCurrencies.CZK.sell;
+            actualAmount = this.props.amount.CZK;
                 break;
                 
             default:
@@ -30,28 +36,33 @@ class SellCurrency extends Component {
             actualPrice = actualPrice.toFixed(2);
         }
 
-        return actualPrice;
+        if (condition == "price") {
+            return actualPrice;
+        } else if (condition == "amount") {
+            return actualAmount;
+        }
+
     }
 
     render() {
-        let price = this.passingPrice();
+        let price = this.passingPrice("price");
+        let amount = this.passingPrice("amount");
 
         return (
             <div className="row box-currencies">
                 <div className="col-3">
                     <p>{this.props.curr}</p>
-                    
                 </div>
-                <div className="col-3">
+                <div className="col-2">
                     {price}
                 </div>  
                 <div className="col-2">
-                    100
+                    {amount}
+                </div>
+                <div className="col-3">
+                    {(price*amount).toFixed(2)} PLN
                 </div>
                 <div className="col-2">
-                    0
-                </div>
-                <div>
                     <button>Sell</button>
                 </div>
             </div>
@@ -65,7 +76,8 @@ class SellCurrency extends Component {
 
 export default connect(state => 
     ({
-        actualCurrencies: state.updateCurrencies.actualCurrencies
+        actualCurrencies: state.updateCurrencies.actualCurrencies,
+        amount: state.auth.currencies
     }),
     {  }
 )(SellCurrency);

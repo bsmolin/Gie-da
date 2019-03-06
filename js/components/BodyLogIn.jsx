@@ -47,13 +47,13 @@ class BodyLogIn extends Component {
                             <div className="col-3">
                                 <h3>Currency</h3>
                             </div>
-                            <div className="col-3">
+                            <div className="col-2">
                                 <h3>Price</h3>
                             </div>
                             <div className="col-2">
                                 <h3>Amount</h3>
                             </div>
-                            <div className="col-2">
+                            <div className="col-3">
                                 <h3>Value</h3>
                             </div>
                             <div className="col-2">
@@ -66,7 +66,7 @@ class BodyLogIn extends Component {
                         })}
 
                         <div>
-                            <p>Available PLN: {this.props.money}</p>
+                            <p><b>Available PLN: {this.props.money.toFixed(2)}</b></p>
                         </div>
                     </div>
                 </div>
