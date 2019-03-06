@@ -26,6 +26,10 @@ class SellCurrency extends Component {
                 break;
         }
 
+        if (typeof(actualPrice) == "number") {
+            actualPrice = actualPrice.toFixed(2);
+        }
+
         return actualPrice;
     }
 

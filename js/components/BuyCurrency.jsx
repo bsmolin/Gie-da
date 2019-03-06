@@ -25,12 +25,18 @@ class BuyCurrency extends Component {
             default:
                 break;
         }
-
+        
+        if (typeof(actualPrice) == "number") {
+            actualPrice = actualPrice.toFixed(2);
+        }
+        
         return actualPrice;
     }
 
     render() {
         let price = this.passingPrice();
+
+        // const btn = document.querySelector('input[toggle]');
         
         return (
             <div className="row box-currencies">
@@ -45,10 +51,36 @@ class BuyCurrency extends Component {
                     {price}
                 </div>
                 <div className="col-3">
-                    <button>Buy</button>
+                    <button type="button" className="btn btn-primary" data-toggle="modal" data-target={"#buyButton"+this.props.curr}>Buy</button>
+
+                    <div className="modal fade" id={"buyButton"+this.props.curr} tabIndex="-1" role="dialog" aria-labelledby="buyButtonTitle" aria-hidden="true">
+                        <div className="modal-dialog modal-dialog-centered" role="document">
+                            <div className="modal-content">
+                            <div className="modal-header">
+                                <h5 className="modal-title" id="buyButtonTitle">Buy: {this.props.curr}</h5>
+                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div className="modal-body">
+                                <label>How many u want to buy?</label>
+                                <input type="number" name="quantity" />
+                                {price}
+                            </div>
+                            <div className="modal-footer">
+                                <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" className="btn btn-primary" onClick={() => this.checkTrasaction(quantity)}>Save changes</button>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         )
+    }
+
+    checkTrasaction = (quantity) => {
+        
     }
 
     buy = () => {
@@ -58,7 +90,8 @@ class BuyCurrency extends Component {
 
 export default connect(state => 
     ({
-        actualCurrencies: state.updateCurrencies.actualCurrencies
+        actualCurrencies: state.updateCurrencies.actualCurrencies,
+        userMoney: state.auth.money
     }),
     {  }
 )(BuyCurrency);
