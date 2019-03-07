@@ -66,7 +66,7 @@ class BodyLogIn extends Component {
                         })}
 
                         <div>
-                            <p><b>Available PLN: {this.props.money.toFixed(2)}</b></p>
+                            <p><b>Available PLN: {this.props.money}</b></p>
                         </div>
                     </div>
                 </div>

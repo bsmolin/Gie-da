@@ -38,13 +38,13 @@ class BuyCurrency extends Component {
         }
 
         if (typeof(actualPrice) == "number") {
-            actualPrice = actualPrice.toFixed(2);
+            actualPrice = actualPrice;
         }
 
         if (condition == "price") {
-            return actualPrice;
+            return parseFloat(actualPrice).toFixed(2);
         } else if (condition == "amount") {
-            return actualAmount;
+            return parseFloat(actualAmount).toFixed(2);
         }
 
     }
@@ -95,7 +95,7 @@ class BuyCurrency extends Component {
 
     totalPrice = (price) => {
         const quan = document.querySelector(`#buyButton${this.props.curr} .modal-body input[name="quantity"]`).value;
-        let total = (price * quan).toFixed(2);
+        let total = parseFloat(price * quan).toFixed(2);
     
         this.setState({
             totalPrice: total
@@ -107,7 +107,7 @@ class BuyCurrency extends Component {
 
         if (quan <= 0) {
             alert("Quantity must be > 0!");
-        } else if (this.props.userMoney >= this.state.totalPrice) {
+        } else if (parseFloat(this.props.userMoney) >= parseFloat(this.state.totalPrice)) {
             this.buy();
         } else {
             alert("You don't have enough money");
@@ -118,20 +118,20 @@ class BuyCurrency extends Component {
         const quan = document.querySelector(`#buyButton${this.props.curr} .modal-body input[name="quantity"]`).value;
 
         let amount = parseFloat(this.passingPrice("amount"))  + parseFloat(quan);
-        let actualMoney = this.props.userMoney - this.state.totalPrice 
+        let actualMoney = parseFloat(this.props.userMoney - this.state.totalPrice).toFixed(2);
         
         switch (this.props.curr) {
             case "GBP":
                 this.props.buyGBP(this.props.userID, actualMoney, amount);
                 break;
             case "EUR":
-                this.props.buyEUR(actualMoney, amount);
+                this.props.buyEUR(this.props.userID, actualMoney, amount);
                 break;
             case "USD":
-                this.props.buyUSD(actualMoney, amount);
+                this.props.buyUSD(this.props.userID, actualMoney, amount);
                 break;
             case "CZK":
-                this.props.buyCZK(actualMoney, amount);
+                this.props.buyCZK(this.props.userID, actualMoney, amount);
                 break;
         
             default:
