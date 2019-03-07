@@ -122,7 +122,7 @@ class BuyCurrency extends Component {
         
         switch (this.props.curr) {
             case "GBP":
-                this.props.buyGBP(actualMoney, amount);
+                this.props.buyGBP(this.props.userID, actualMoney, amount);
                 break;
             case "EUR":
                 this.props.buyEUR(actualMoney, amount);
@@ -138,12 +138,14 @@ class BuyCurrency extends Component {
                 break;
         }
         
+        document.querySelector(`#buyButton${this.props.curr} .modal-content button.close`).click();
     }
 }
 
 export default connect(state => 
     ({
         actualCurrencies: state.updateCurrencies.actualCurrencies,
+        userID: state.auth.id,
         userMoney: state.auth.money,
         amount: state.auth.currencies
     }),

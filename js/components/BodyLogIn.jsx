@@ -15,7 +15,7 @@ class BodyLogIn extends Component {
             <div className="container">
                 <div className="row">
 
-                    <div className="col-12 col-md-6">
+                    <div className="col-12 col-lg-6">
                         <div className="box-title">
                             <h2>Currencies</h2>
                         </div>
@@ -39,7 +39,7 @@ class BodyLogIn extends Component {
                         })}
                     
                     </div>
-                    <div className="col-12 col-md-6">
+                    <div className="col-12 col-lg-6">
                         <div className="box-title">
                             <h2>My wallet</h2>
                         </div>

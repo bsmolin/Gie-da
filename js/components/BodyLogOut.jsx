@@ -123,8 +123,6 @@ class BodyLogOut extends Component {
             message: ""
         });
 
-        console.log('ok');
-
         fetch("http://localhost:3004/users", {
             method: 'POST',
             headers: {
