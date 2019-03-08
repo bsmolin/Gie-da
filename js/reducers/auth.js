@@ -35,7 +35,7 @@ const auth = (state = initialState, action) => {
                 login: false
             }
 
-        case "buyGBP":
+        case "updateGBP":
             return {
                 ...state,
                 money: action.money,
@@ -45,7 +45,7 @@ const auth = (state = initialState, action) => {
                 }
             }
 
-        case "buyEUR":
+        case "updateEUR":
             return {
                 ...state,
                 money: action.money,
@@ -55,7 +55,7 @@ const auth = (state = initialState, action) => {
                 }
             }
 
-        case "buyUSD":
+        case "updateUSD":
             return {
                 ...state,
                 money: action.money,
@@ -65,7 +65,7 @@ const auth = (state = initialState, action) => {
                 }
             }
 
-        case "buyCZK":
+        case "updateCZK":
             return {
                 ...state,
                 money: action.money,

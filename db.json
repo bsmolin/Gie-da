@@ -6,12 +6,12 @@
       "password": "test",
       "name": "Adam",
       "lname": "Kowalski",
-      "money": "425.03",
+      "money": "1366.57",
       "currencies": {
-        "GBP": 1224,
+        "GBP": 1240,
         "EUR": 2090,
-        "USD": 3145,
-        "CZK": 231
+        "USD": 3045,
+        "CZK": 300
       }
     },
     {
@@ -20,9 +20,9 @@
       "password": "adam",
       "name": "Admin",
       "lname": "Adminowaty",
-      "money": "1080.35",
+      "money": "1075.38",
       "currencies": {
-        "GBP": 1055,
+        "GBP": 1056,
         "EUR": 1062,
         "USD": 1056,
         "CZK": 2663

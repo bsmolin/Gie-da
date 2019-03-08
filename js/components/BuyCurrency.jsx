@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { buyGBP, buyEUR, buyUSD, buyCZK } from '../actions';
+import { updateGBP, updateEUR, updateUSD, updateCZK } from '../actions';
 
 class BuyCurrency extends Component {
     constructor() {
@@ -17,19 +17,19 @@ class BuyCurrency extends Component {
 
         switch (this.props.curr) {
             case "GBP":
-            actualPrice = this.props.actualCurrencies.GBP.sell;
+            actualPrice = this.props.actualCurrencies.GBP.buy;
             actualAmount = this.props.amount.GBP;
                 break;
             case "EUR":
-            actualPrice = this.props.actualCurrencies.EUR.sell;
+            actualPrice = this.props.actualCurrencies.EUR.buy;
             actualAmount = this.props.amount.EUR;
                 break;
             case "USD":
-            actualPrice = this.props.actualCurrencies.USD.sell;
+            actualPrice = this.props.actualCurrencies.USD.buy;
             actualAmount = this.props.amount.USD;
                 break;
             case "CZK":
-            actualPrice = this.props.actualCurrencies.CZK.sell;
+            actualPrice = this.props.actualCurrencies.CZK.buy;
             actualAmount = this.props.amount.CZK;
                 break;
                 
@@ -83,7 +83,7 @@ class BuyCurrency extends Component {
                             </div>
                             <div className="modal-footer">
                                 <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" className="btn btn-primary" onClick={() => this.checkTrasaction()}>Save changes</button>
+                                <button type="button" className="btn btn-primary" onClick={() => this.checkTrasaction()}>BUY</button>
                             </div>
                             </div>
                         </div>
@@ -108,30 +108,28 @@ class BuyCurrency extends Component {
         if (quan <= 0) {
             alert("Quantity must be > 0!");
         } else if (parseFloat(this.props.userMoney) >= parseFloat(this.state.totalPrice)) {
-            this.buy();
+            this.buy(quan);
         } else {
             alert("You don't have enough money");
         }
     }
 
-    buy = () => {
-        const quan = document.querySelector(`#buyButton${this.props.curr} .modal-body input[name="quantity"]`).value;
-
+    buy = (quan) => {
         let amount = parseFloat(this.passingPrice("amount"))  + parseFloat(quan);
         let actualMoney = parseFloat(this.props.userMoney - this.state.totalPrice).toFixed(2);
         
         switch (this.props.curr) {
             case "GBP":
-                this.props.buyGBP(this.props.userID, actualMoney, amount);
+                this.props.updateGBP(this.props.userID, actualMoney, amount);
                 break;
             case "EUR":
-                this.props.buyEUR(this.props.userID, actualMoney, amount);
+                this.props.updateEUR(this.props.userID, actualMoney, amount);
                 break;
             case "USD":
-                this.props.buyUSD(this.props.userID, actualMoney, amount);
+                this.props.updateUSD(this.props.userID, actualMoney, amount);
                 break;
             case "CZK":
-                this.props.buyCZK(this.props.userID, actualMoney, amount);
+                this.props.updateCZK(this.props.userID, actualMoney, amount);
                 break;
         
             default:
@@ -149,5 +147,5 @@ export default connect(state =>
         userMoney: state.auth.money,
         amount: state.auth.currencies
     }),
-    { buyGBP, buyEUR, buyUSD, buyCZK }
+    { updateGBP, updateEUR, updateUSD, updateCZK }
 )(BuyCurrency);

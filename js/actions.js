@@ -15,18 +15,14 @@ export const logOut = () => ({
     type: "logOut"
 })
 
-export const userActions = value => ({
-    type: "addUser",
-    login: value,
-    password: value
-});
-
 export const updateCurrencies = data => ({
     type: "updateCurrencies",
     data: data
 })
 
-export const buyGBP = (id, money, value) => {
+// update currencies
+
+export const updateGBP = (id, money, value) => {
     return dispatch => {
         let finalDataToUpdate;
 
@@ -44,21 +40,21 @@ export const buyGBP = (id, money, value) => {
                 money: money,
                 currencies: finalDataToUpdate
             })  
-            .then(r => dispatch(saveBuyGBP(money, value))
+            .then(r => dispatch(saveUpdateGBP(money, value))
             )
         });
     }
 }
 
-export const saveBuyGBP = (money, value) => {
+export const saveUpdateGBP = (money, value) => {
     return {
-        type: "buyGBP",
+        type: "updateGBP",
         money: money,
         value: value
     }
 }
 
-export const buyEUR = (id, money, value) => {
+export const updateEUR = (id, money, value) => {
     return dispatch => {
         let finalDataToUpdate;
 
@@ -76,19 +72,19 @@ export const buyEUR = (id, money, value) => {
                 money: money,
                 currencies: finalDataToUpdate
             })  
-            .then(r => dispatch(saveBuyEUR(money, value))
+            .then(r => dispatch(saveUpdateEUR(money, value))
             )
         });
     }
 }
 
-export const saveBuyEUR = (money, value) => ({
-    type: "buyEUR",
+export const saveUpdateEUR = (money, value) => ({
+    type: "updateEUR",
     money: money,
     value: value
 })
 
-export const buyUSD = (id, money, value) => {
+export const updateUSD = (id, money, value) => {
     return dispatch => {
         let finalDataToUpdate;
 
@@ -106,19 +102,19 @@ export const buyUSD = (id, money, value) => {
                 money: money,
                 currencies: finalDataToUpdate
             })  
-            .then(r => dispatch(saveBuyUSD(money, value))
+            .then(r => dispatch(saveUpdateUSD(money, value))
             )
         });
     }
 }
 
-export const saveBuyUSD = (money, value) => ({
-    type: "buyUSD",
+export const saveUpdateUSD = (money, value) => ({
+    type: "updateUSD",
     money: money,
     value: value
 })
 
-export const buyCZK = (id, money, value) => {
+export const updateCZK = (id, money, value) => {
     return dispatch => {
         let finalDataToUpdate;
 
@@ -136,14 +132,15 @@ export const buyCZK = (id, money, value) => {
                 money: money,
                 currencies: finalDataToUpdate
             })  
-            .then(r => dispatch(saveBuyCZK(money, value))
+            .then(r => dispatch(saveUpdateCZK(money, value))
             )
         });
     }
 }
 
-export const saveBuyCZK = (money, value) => ({
-    type: "buyCZK",
+export const saveUpdateCZK = (money, value) => ({
+    type: "updateCZK",
     money: money,
     value: value
 })
+
