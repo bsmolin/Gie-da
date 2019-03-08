@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import BuyCurrency from './BuyCurrency.jsx';
 import SellCurrency from './SellCurrency.jsx';
-import "../../sass/BodyLogIn.scss";
 import { updateCurrencies } from '../actions';
+import "../../sass/BodyLogIn.scss";
 
 class BodyLogIn extends Component {
     componentWillMount() {
@@ -11,6 +11,35 @@ class BodyLogIn extends Component {
     }
 
     render() {
+        let buyButtons;
+        let sellButtons;
+
+        if (this.props.currencies != null) {
+            buyButtons = (
+                Object.keys(this.props.currencies).map(function(curr, index) {
+                    return <BuyCurrency key={index} curr={curr} />;
+                })
+            )
+
+            sellButtons = (
+                Object.keys(this.props.currencies).map(function(curr, index) {
+                    return <SellCurrency key={index} curr={curr} />;
+                })
+            )
+        } else {
+            buyButtons = (
+                <div>
+                    You need to check any currency in edit profile to start
+                </div>
+            )
+
+            sellButtons = (
+                <div>
+                    You need to check any currency in edit profile to start
+                </div>
+            )
+        }
+
         return ( 
             <div className="container">
                 <div className="row">
@@ -33,10 +62,8 @@ class BodyLogIn extends Component {
                                 <h3>Actions</h3>
                             </div>
                         </div>
-               
-                        {Object.keys(this.props.currencies).map(function(curr, index) {
-                            return <BuyCurrency key={index} curr={curr} />;
-                        })}
+
+                       {buyButtons}
                     
                     </div>
                     <div className="col-12 col-lg-6">
@@ -61,9 +88,7 @@ class BodyLogIn extends Component {
                             </div>
                         </div>
                
-                        {Object.keys(this.props.currencies).map(function(curr, index) {
-                            return <SellCurrency key={index} curr={curr} />;
-                        })}
+                        {sellButtons}
 
                         <div>
                             <p><b>Available PLN: {this.props.money}</b></p>

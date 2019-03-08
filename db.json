@@ -6,12 +6,12 @@
       "password": "test",
       "name": "Adam",
       "lname": "Kowalski",
-      "money": "1366.57",
+      "money": "1335.46",
       "currencies": {
-        "GBP": 1240,
+        "GBP": 1288,
         "EUR": 2090,
-        "USD": 3045,
-        "CZK": 300
+        "USD": 3000,
+        "CZK": 50
       }
     },
     {
@@ -34,12 +34,17 @@
       "password": "test",
       "name": "Jan",
       "lname": "Kowalski",
-      "money": 1000,
+      "money": "2895.00",
       "currencies": {
         "GBP": 1000,
         "EUR": 1000,
-        "USD": 1000
+        "USD": 500
       }
+    },
+    {
+      "login": "test",
+      "password": "test",
+      "id": 3
     }
   ],
   "globalWallet": {

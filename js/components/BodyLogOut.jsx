@@ -18,8 +18,6 @@ class BodyLogOut extends Component {
     }
 
     render() {
-        let helpThis = this;
-
         return (
             <div className="container">
                 <div className="login-page">
@@ -28,21 +26,6 @@ class BodyLogOut extends Component {
                             <input type="text" placeholder="login" value={this.state.registerLogin} onChange={(e) => this.updateState(e,"registerLogin")}/>
                             <input type="password" placeholder="password" value={this.state.registerPassword} onChange={(e) => this.updateState(e, "registerPassword")} />
                             <input type="password" placeholder="password again" value={this.state.registerPassword2} onChange={(e) => this.updateState(e, "registerPassword2")} />
-
-                            {/* <div className="select-curr">
-                                <p>Select currencies u want to have :</p>
-                                <ul>
-                                    {Object.keys(this.props.currencies).map(function(curr, index) {
-                                        return (
-                                            <li key={index}>
-                                                <input type="checkbox" name={curr} value={curr} onChange={() => helpThis.updateState(null, curr)} /> 
-                                                {curr}
-                                            </li>
-                                        )
-                                    })}
-                                </ul>
-                            </div> */}
-
                             <div>{this.state.message}</div>
                             <button type="submit" onClick={(e) => this.createAccountValidation(e)}>Create</button>
                             <p className="message">Already registered? <button onClick={this.showLoginPage}>Sign In</button></p>
@@ -106,6 +89,7 @@ class BodyLogOut extends Component {
         .then(response => response.json())
         .then(data => {
             let user = false;
+            
 
             data.forEach(element => {
                 if (element.login == this.state.loginName && element.password == this.state.loginPassword) {

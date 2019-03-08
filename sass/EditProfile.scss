@@ -1,0 +1,30 @@
+h1 {
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.edit-element {
+    margin-bottom: 10px;
+
+    label {
+        width: 20%;
+    }
+    
+    .form-control {
+        display: inline-flex;
+        width: 200px;
+        align-items: center;
+    }
+}
+
+.edit-currencies {
+    margin-top: 50px;
+
+    div {
+        display: block;
+    }
+}
+
+.btn-block {
+    margin-top: 60px;
+}

@@ -110,7 +110,7 @@ class SellCurrency extends Component {
 
         if (quan <= 0) {
             alert("Quantity must be > 0!");
-        } else if (quan > this.passingPrice("amount")) {
+        } else if (quan > parseFloat(this.passingPrice("amount")) ) {
             alert("You don't have enough amount");
         } else {
             this.sell(quan);

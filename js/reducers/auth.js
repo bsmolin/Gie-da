@@ -21,7 +21,7 @@ const auth = (state = initialState, action) => {
                 ...state,
                 login: true,
                 id: action.id,
-                userLogin: action.login,
+                userLogin: action.userLogin,
                 password: action.password,
                 name: action.name,
                 lname: action.lname,
