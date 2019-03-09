@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
 import Header from './Header.jsx';
+import { updateProfile, updateGBP, updateEUR, updateUSD, updateCZK } from '../actions';
 import "../../sass/EditProfile.scss";
 
 class EditProfile extends Component {
@@ -91,7 +92,7 @@ class EditProfile extends Component {
                             </div>
                             <div className="edit-element">
                                 <label>password</label>
-                                <input type="text" className="form-control" value={this.state.password} onChange={(e) => this.updateValue(e, "password")} />
+                                <input type="password" className="form-control" value={this.state.password} onChange={(e) => this.updateValue(e, "password")} />
                             </div>
                             <div className="edit-element">
                                 <label>name</label>
@@ -125,8 +126,8 @@ class EditProfile extends Component {
                         </div>
                     </div>
 
-                    <button type="submit" className="btn btn-primary btn-lg btn-block">SAVE</button>
-                    <Link to={`/`} className="btn btn-secondary btn-lg btn-block">BACK WITHOUT SAVING</Link>
+                    <button type="submit" className="btn btn-primary btn-lg btn-block" onClick={ this.saveData}>SAVE</button>
+                    <Link to={`/`} id="backBtn" className="btn btn-secondary btn-lg btn-block">BACK WITHOUT SAVING</Link>
                 </div>
             </div>
         )
@@ -187,12 +188,28 @@ class EditProfile extends Component {
         }
     }
 
-    updateCurrenciesValues = () => {
-        fetch(`http://api.nbp.pl/api/exchangerates/tables/C/`)
-            .then(response => response.json())
-            .then(data => {
-                this.props.updateCurrencies(data);
-            })
+    saveData = () => {
+        let id = this.props.userData.id;
+
+        this.props.updateProfile(id, this.state.password, this.state.name, this.state.lname, this.state.money);
+
+        if ( document.querySelector('input#GBP').disabled == false && this.state.GBP != false ) {
+            this.props.updateGBP(id, this.state.money, 0);
+        }
+
+        if ( document.querySelector('input#USD').disabled == false && this.state.USD != false ) {
+            this.props.updateUSD(id, this.state.money, 0);
+        }
+
+        if ( document.querySelector('input#EUR').disabled == false && this.state.EUR != false ) {
+            this.props.updateEUR(id, this.state.money, 0);
+        }
+
+        if ( document.querySelector('input#CZK').disabled == false && this.state.CZK != false ) {
+            this.props.updateCZK(id, this.state.money, 0);
+        }
+        
+        document.querySelector('#backBtn').click();
     }
 }
 
@@ -202,6 +219,10 @@ export default connect(state =>
         currencies: state.auth.currencies
     }),
     {
-
+        updateProfile,
+        updateGBP,
+        updateEUR,
+        updateUSD,
+        updateCZK
     }
 )(EditProfile);

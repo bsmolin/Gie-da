@@ -1,4 +1,5 @@
 import axios from 'axios';
+import md5 from 'md5';
 
 export const logIn = userData => ({
     type: "logIn",
@@ -142,5 +143,28 @@ export const saveUpdateCZK = (money, value) => ({
     type: "updateCZK",
     money: money,
     value: value
+})
+
+export const updateProfile = (id, password, name, lname, money) => {
+    let md5Password = md5(password);
+    
+    return dispatch => {
+        axios.patch(`http://localhost:3004/users/${id}`, {
+            password: md5Password,
+            name: name,
+            lname: lname,
+            money: money
+        })
+        .then(r => dispatch(saveUpdateProfile(md5Password, name, lname, money))
+        );
+    }
+}
+
+export const saveUpdateProfile = (password, name, lname, money) => ({
+    type: "updateProfile",
+    password: password,
+    name: name,
+    lname: lname,
+    money: money
 })
 

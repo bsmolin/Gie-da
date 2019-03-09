@@ -3,27 +3,27 @@
     {
       "id": 0,
       "login": "admin",
-      "password": "test",
+      "password": "098f6bcd4621d373cade4e832627b4f6",
       "name": "Adam",
       "lname": "Kowalski",
-      "money": "1335.46",
+      "money": "1319.85",
       "currencies": {
-        "GBP": 1288,
+        "GBP": 1291,
         "EUR": 2090,
-        "USD": 3000,
-        "CZK": 50
+        "USD": 0,
+        "CZK": 0
       }
     },
     {
       "id": 1,
       "login": "adam",
-      "password": "adam",
+      "password": "1d7c2923c1684726dc23d2901c4d8157",
       "name": "Admin",
       "lname": "Adminowaty",
-      "money": "1075.38",
+      "money": "1063.62",
       "currencies": {
-        "GBP": 1056,
-        "EUR": 1062,
+        "GBP": 1060,
+        "EUR": 1060,
         "USD": 1056,
         "CZK": 2663
       }
@@ -31,20 +31,40 @@
     {
       "id": 2,
       "login": "kowal",
-      "password": "test",
-      "name": "Jan",
+      "password": "098f6bcd4621d373cade4e832627b4f6",
+      "name": "Janek",
       "lname": "Kowalski",
       "money": "2895.00",
       "currencies": {
         "GBP": 1000,
         "EUR": 1000,
-        "USD": 500
+        "USD": 0,
+        "CZK": 0
       }
     },
     {
       "login": "test",
+      "password": "098f6bcd4621d373cade4e832627b4f6",
+      "id": 3,
+      "name": "Jerzy",
+      "lname": "Nazwisko",
+      "money": "398.78",
+      "currencies": {
+        "GBP": 9,
+        "EUR": 3,
+        "CZK": 100
+      }
+    },
+    {
+      "login": "test2",
       "password": "test",
-      "id": 3
+      "id": 4,
+      "currencies": {
+        "CZK": 0,
+        "USD": 1
+      },
+      "money": "46.13",
+      "name": "Adam"
     }
   ],
   "globalWallet": {

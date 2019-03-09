@@ -74,6 +74,15 @@ const auth = (state = initialState, action) => {
                     CZK: action.value
                 }
             }
+
+        case "updateProfile":
+            return {
+                ...state,
+                password: action.password,
+                name: action.name,
+                lname: action.lname,
+                money: action.money
+            }
         
         default:
         return state;

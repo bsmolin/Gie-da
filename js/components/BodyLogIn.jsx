@@ -4,6 +4,7 @@ import BuyCurrency from './BuyCurrency.jsx';
 import SellCurrency from './SellCurrency.jsx';
 import { updateCurrencies } from '../actions';
 import "../../sass/BodyLogIn.scss";
+import axios from 'axios';
 
 class BodyLogIn extends Component {
     componentWillMount() {
@@ -100,10 +101,9 @@ class BodyLogIn extends Component {
     }
 
     updateCurrenciesValues = () => {
-        fetch(`http://api.nbp.pl/api/exchangerates/tables/C/`)
-        .then(response => response.json())
-        .then(data => {
-            this.props.updateCurrencies(data);
+        axios.get("http://api.nbp.pl/api/exchangerates/tables/C/")
+        .then(response => {
+           this.props.updateCurrencies(response.data);
         })
     }
 }

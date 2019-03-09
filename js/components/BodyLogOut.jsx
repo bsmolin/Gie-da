@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../../sass/BodyLogOut.scss';
 import { connect } from 'react-redux';
 import { logIn } from '../actions';
+import md5 from 'md5';
 
 class BodyLogOut extends Component {
     constructor(props) {
@@ -89,10 +90,8 @@ class BodyLogOut extends Component {
         .then(response => response.json())
         .then(data => {
             let user = false;
-            
-
             data.forEach(element => {
-                if (element.login == this.state.loginName && element.password == this.state.loginPassword) {
+                if (element.login == this.state.loginName && element.password == md5(this.state.loginPassword)) {
                     this.props.logIn(element);
                     user = true;
                 }
@@ -107,12 +106,14 @@ class BodyLogOut extends Component {
             message: ""
         });
 
+        let md5Password = md5(this.state.registerPassword);
+
         fetch("http://localhost:3004/users", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ login: this.state.registerLogin, password: this.state.registerPassword })
+            body: JSON.stringify({ login: this.state.registerLogin, password: md5Password })
         })
         .then(
             this.showLoginPage()
@@ -141,8 +142,6 @@ class BodyLogOut extends Component {
             (user) ? true : false;
         })
         .then(sth => {
-            console.log(sth);
-            
             (user) ? this.createAccount() : null;
         })
 
