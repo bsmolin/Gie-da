@@ -20,7 +20,8 @@ const initialState = {
             sell: null,
             buy: null
         }
-    }
+    },
+    crazyMode: false
 }
 
 const updateCurrencies = (state = initialState, action) => {
@@ -44,6 +45,60 @@ const updateCurrencies = (state = initialState, action) => {
                     CZK: {
                         sell: action.data[0].rates[8].bid,
                         buy: action.data[0].rates[8].ask
+                    }
+                }
+            }
+
+        case "crazyMode":
+            return {
+                ...state,
+                crazyMode: action.value
+            }
+
+        case "crazyModeUpdateGBP":
+            return {
+                ...state,
+                actualCurrencies: {
+                    ...state.actualCurrencies,
+                    GBP: {
+                        sell: action.sell,
+                        buy: action.buy
+                    }
+                }
+            }
+
+        case "crazyModeUpdateUSD":
+            return {
+                ...state,
+                actualCurrencies: {
+                    ...state.actualCurrencies,
+                    USD: {
+                        sell: action.sell,
+                        buy: action.buy
+                    }
+                }
+            }
+
+        case "crazyModeUpdateEUR":
+            return {
+                ...state,
+                actualCurrencies: {
+                    ...state.actualCurrencies,
+                    EUR: {
+                        sell: action.sell,
+                        buy: action.buy
+                    }
+                }
+            }
+
+        case "crazyModeUpdateCZK":
+            return {
+                ...state,
+                actualCurrencies: {
+                    ...state.actualCurrencies,
+                    CZK: {
+                        sell: action.sell,
+                        buy: action.buy
                     }
                 }
             }

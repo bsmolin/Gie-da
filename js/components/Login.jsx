@@ -8,11 +8,17 @@ class Login extends Component {
     
     render() {
         let loginResult;
+        let admin = "";
+
+        if (this.props.admin == true) {
+            admin = <NavLink to="/admin"><i className="fas fa-unlock-alt"></i></NavLink>;
+        }
 
         if (this.props.login === true) {
             loginResult = (
                 <div>
                     Logged in as {this.props.name}
+                    {admin}
                     <NavLink to="/edit"><i className="fas fa-cog"></i></NavLink>
                     <NavLink to="/" onClick={this.logOut}><i className="fas fa-power-off"></i></NavLink>
                 </div>
@@ -31,7 +37,8 @@ class Login extends Component {
 export default connect(state => 
     ({
         login: state.auth.login,
-        name: state.auth.name
+        name: state.auth.name,
+        admin: state.auth.admin
     }),
     {
         logOut

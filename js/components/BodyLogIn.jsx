@@ -2,12 +2,18 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import BuyCurrency from './BuyCurrency.jsx';
 import SellCurrency from './SellCurrency.jsx';
-import { updateCurrencies } from '../actions';
+import { updateCurrencies, crazyModeUpdateGBP, crazyModeUpdateUSD, crazyModeUpdateEUR, crazyModeUpdateCZK } from '../actions';
 import "../../sass/BodyLogIn.scss";
 import axios from 'axios';
 
 class BodyLogIn extends Component {
-    componentWillMount() {
+    constructor() {
+        super();
+
+        let interval;
+    }
+
+    componentDidMount() {
         this.updateCurrenciesValues();
     }
 
@@ -101,19 +107,87 @@ class BodyLogIn extends Component {
     }
 
     updateCurrenciesValues = () => {
-        axios.get("http://api.nbp.pl/api/exchangerates/tables/C/")
-        .then(response => {
-           this.props.updateCurrencies(response.data);
-        })
+        if (this.props.crazyModeStatus) {
+            const randValue = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
+            
+            this.interval = setInterval(() => {
+                const currTab = ["GBP", "USD", "EUR", "CZK"];
+                let randNum = Math.floor((Math.random() * 4) + 0);
+                let numCurr = currTab[randNum];
+                let randType = Math.floor((Math.random() * 2) - 0);
+                
+
+                switch (numCurr) {
+                    case "GBP":
+                        let diffrenceGBP = this.props.actualCurrencies.GBP.sell - (randValue(-5, 5) / 100);
+
+                        if (randType == 0) {
+                            this.props.crazyModeUpdateGBP(diffrenceGBP, this.props.actualCurrencies.GBP.buy);
+                        } else {
+                            this.props.crazyModeUpdateGBP(this.props.actualCurrencies.GBP.sell, diffrenceGBP);
+                        }
+                        break;
+
+                    case "USD": 
+                        let diffrenceUSD = this.props.actualCurrencies.USD.sell - (randValue(-5, 5) / 100);
+
+                        if (randType == 0) {
+                            this.props.crazyModeUpdateUSD(diffrenceUSD, this.props.actualCurrencies.USD.buy);
+                        } else {
+                            this.props.crazyModeUpdateUSD(this.props.actualCurrencies.USD.sell, diffrenceUSD);
+                        }
+                    break;
+                    
+                    case "EUR":
+                        let diffrenceEUR = this.props.actualCurrencies.EUR.sell - (randValue(-5, 5) / 100);
+
+                        if (randType == 0) {
+                            this.props.crazyModeUpdateEUR(diffrenceEUR, this.props.actualCurrencies.EUR.buy);
+                        } else {
+                            this.props.crazyModeUpdateEUR(this.props.actualCurrencies.EUR.sell, diffrenceEUR);
+                        }
+                    break;
+
+                    case "CZK":
+                        let diffrenceCZK = this.props.actualCurrencies.CZK.sell - (randValue(-5, 5) / 100);
+
+                        if (randType == 0) {
+                            this.props.crazyModeUpdateCZK(diffrenceCZK, this.props.actualCurrencies.CZK.buy);
+                        } else {
+                            this.props.crazyModeUpdateCZK(this.props.actualCurrencies.CZK.sell, diffrenceCZK);
+                        }
+                    break;
+                
+                    default:
+                        break;
+                }
+                                
+            }, 1000);
+        } else {
+            axios.get("http://api.nbp.pl/api/exchangerates/tables/C/")
+            .then(response => {
+               this.props.updateCurrencies(response.data);
+            })
+        }
     }
+
+    componentWillUnmount() {
+        clearInterval(this.interval);
+    };
 }
 
 export default connect(state => 
     ({
         currencies: state.auth.currencies,
-        money: state.auth.money
+        money: state.auth.money,
+        crazyModeStatus: state.updateCurrencies.crazyMode,
+        actualCurrencies: state.updateCurrencies.actualCurrencies
     }),
     { 
-        updateCurrencies
+        updateCurrencies,
+        crazyModeUpdateGBP,
+        crazyModeUpdateUSD,
+        crazyModeUpdateEUR,
+        crazyModeUpdateCZK
     }
 )(BodyLogIn);

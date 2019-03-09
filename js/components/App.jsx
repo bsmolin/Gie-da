@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { HashRouter, Route, Switch } from 'react-router-dom';
 import Main from './Main.jsx';
 import EditProfile from './EditProfile.jsx';
+import AdminPage from './AdminPage.jsx';
 
 
 class App extends Component {
@@ -13,6 +14,7 @@ class App extends Component {
                     <Route exact path='/' component={Main} />
                     <Route path='/login' component={Main} />
                     <Route path='/edit' component={EditProfile} />
+                    <Route path='/admin' component={AdminPage} />
                     <Route path='*' component={NotFound} />
                 </Switch>
             </HashRouter>

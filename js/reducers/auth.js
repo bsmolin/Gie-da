@@ -1,6 +1,7 @@
 const initialState = {
     login: false,
     id: null,
+    admin: false,
     userLogin: "",
     password: "",
     name: "",
@@ -21,6 +22,7 @@ const auth = (state = initialState, action) => {
                 ...state,
                 login: true,
                 id: action.id,
+                admin: action.admin,
                 userLogin: action.userLogin,
                 password: action.password,
                 name: action.name,

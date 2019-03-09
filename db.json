@@ -2,13 +2,14 @@
   "users": [
     {
       "id": 0,
+      "admin": true,
       "login": "admin",
       "password": "098f6bcd4621d373cade4e832627b4f6",
       "name": "Adam",
       "lname": "Kowalski",
-      "money": "1319.85",
+      "money": "1309.82",
       "currencies": {
-        "GBP": 1291,
+        "GBP": 1293,
         "EUR": 2090,
         "USD": 0,
         "CZK": 0

@@ -4,6 +4,7 @@ import md5 from 'md5';
 export const logIn = userData => ({
     type: "logIn",
     id: userData.id,
+    admin: userData.admin,
     userLogin: userData.login,
     password: userData.password,
     name: userData.name,
@@ -168,3 +169,33 @@ export const saveUpdateProfile = (password, name, lname, money) => ({
     money: money
 })
 
+// crazy mode 
+
+export const crazyMode = value => ({
+    type: "crazyMode",
+    value: value
+})
+
+export const crazyModeUpdateGBP = (sell, buy) => ({
+    type: "crazyModeUpdateGBP",
+    sell: sell,
+    buy: buy
+})
+
+export const crazyModeUpdateUSD = (sell, buy) => ({
+    type: "crazyModeUpdateUSD",
+    sell: sell,
+    buy: buy
+})
+
+export const crazyModeUpdateEUR = (sell, buy) => ({
+    type: "crazyModeUpdateEUR",
+    sell: sell,
+    buy: buy
+})
+
+export const crazyModeUpdateCZK = (sell, buy) => ({
+    type: "crazyModeUpdateCZK",
+    sell: sell,
+    buy: buy
+})
