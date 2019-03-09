@@ -7,14 +7,14 @@ import '../../sass/AdminPage.scss';
 
 class AdminPage extends Component {
     render() {
-        // if (this.props.userAccess == false) {
-        //     return (
-        //         <div className="container">
-        //             <Header />
-        //             <div>You don't have access to this page. Please log in!</div>
-        //         </div>
-        //     )
-        // } else {
+        if (this.props.userAccess == false) {
+            return (
+                <div className="container">
+                    <Header />
+                    <div>You don't have access to this page. Please log in!</div>
+                </div>
+            )
+        } else {
         return (
             <div className="container">
                 <Header />
@@ -41,7 +41,7 @@ class AdminPage extends Component {
                         </div>
                         <div className="col-lg-3 adminPage-sidebar">
                             <h2>Actual currencies</h2>
-                            {/* <div>
+                            <div>
                                 <h3>GBP</h3>
                                 <div className="adminPage-curr">
                                     <p>Buy: <span>{(this.props.actualCurrencies.GBP.buy).toFixed(2)}</span></p>
@@ -68,7 +68,7 @@ class AdminPage extends Component {
                                     <p>Buy: <span>{(this.props.actualCurrencies.CZK.buy).toFixed(2)}</span></p>
                                     <p>Sell: <span>{(this.props.actualCurrencies.CZK.sell).toFixed(2)}</span></p>
                                 </div>
-                            </div> */}
+                            </div>
                         </div>
                     </div>
 
@@ -78,7 +78,7 @@ class AdminPage extends Component {
         )
     }
 
-    // }
+    }
 
     crazyMode = () => {
         (this.props.crazyModeStatus) ? this.props.crazyMode(false) : this.props.crazyMode(true);

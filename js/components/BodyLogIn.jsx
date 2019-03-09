@@ -162,7 +162,7 @@ class BodyLogIn extends Component {
                         break;
                 }
                                 
-            }, 1000);
+            }, 2000);
         } else {
             axios.get("http://api.nbp.pl/api/exchangerates/tables/C/")
             .then(response => {

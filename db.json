@@ -7,9 +7,9 @@
       "password": "098f6bcd4621d373cade4e832627b4f6",
       "name": "Adam",
       "lname": "Kowalski",
-      "money": "1309.82",
+      "money": "1314.6",
       "currencies": {
-        "GBP": 1293,
+        "GBP": 1292,
         "EUR": 2090,
         "USD": 0,
         "CZK": 0
@@ -20,7 +20,7 @@
       "login": "adam",
       "password": "1d7c2923c1684726dc23d2901c4d8157",
       "name": "Admin",
-      "lname": "Adminowaty",
+      "lname": "Adminowat",
       "money": "1063.62",
       "currencies": {
         "GBP": 1060,
@@ -66,6 +66,16 @@
       },
       "money": "46.13",
       "name": "Adam"
+    },
+    {
+      "login": "test3",
+      "password": "098f6bcd4621d373cade4e832627b4f6",
+      "id": 5,
+      "name": "aaa",
+      "currencies": {
+        "USD": 0
+      },
+      "money": "995.18"
     }
   ],
   "globalWallet": {
