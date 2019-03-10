@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
 import Header from './Header.jsx';
 import { updateProfile, updateGBP, updateEUR, updateUSD, updateCZK } from '../actions';
+import md5 from 'md5';
 import "../../sass/EditProfile.scss";
 
 class EditProfile extends Component {
@@ -191,7 +192,13 @@ class EditProfile extends Component {
     saveData = () => {
         let id = this.props.userData.id;
 
-        this.props.updateProfile(id, this.state.password, this.state.name, this.state.lname, this.state.money);
+        if (this.state.password != this.props.userData.password) {
+            this.props.updateProfile(id, md5(this.state.password), this.state.name, this.state.lname, this.state.money);
+
+        } else {
+            this.props.updateProfile(id, this.state.password, this.state.name, this.state.lname, this.state.money);
+        }
+
 
         if ( document.querySelector('input#GBP').disabled == false && this.state.GBP != false ) {
             this.props.updateGBP(id, this.state.money, 0);
