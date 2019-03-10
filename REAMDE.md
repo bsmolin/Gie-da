@@ -10,6 +10,8 @@ Wersja crazy - w panelu administracyjnym możliwość włączenia losowych zała
 - JSON-Server
 - axios
 - md5
+- SCSS
+- Webpack
 
 # Features:
 
