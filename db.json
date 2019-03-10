@@ -4,13 +4,13 @@
       "id": 0,
       "admin": true,
       "login": "admin",
-      "password": "fb469d7ef430b0baf0cab6c436e70375",
-      "name": "Adamm",
+      "password": "098f6bcd4621d373cade4e832627b4f6",
+      "name": "Adam",
       "lname": "Kowalski",
-      "money": "1314.6",
+      "money": "1312.98",
       "currencies": {
-        "GBP": 1292,
-        "EUR": 2090,
+        "GBP": 1294,
+        "EUR": 2088,
         "USD": 0,
         "CZK": 0
       }

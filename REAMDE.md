@@ -1,4 +1,4 @@
-# [NAZWA_PROJEKTU]
+# [GIELDA]
 
 Mini giełda - kupuj i sprzedawaj waluty.
 Wersja crazy - w panelu administracyjnym możliwość włączenia losowych załamań kursów. 
@@ -26,11 +26,11 @@ Wersja crazy - w panelu administracyjnym możliwość włączenia losowych zała
 - Zmiana JSON-Server'a na Firebase'a
 - Ostylowanie
 
-#Status
+# Status
 
 W trakcie tworzenia
 
-#Instalation:
+# Instalation:
 
 1. git clone https://github.com/bsmolin/Gielda.git
 2. npm install json-server -g
