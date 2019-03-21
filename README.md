@@ -1,7 +1,7 @@
 # [GIELDA]
 
-Mini giełda - kupuj i sprzedawaj waluty.
-Wersja crazy - w panelu administracyjnym możliwość włączenia losowych załamań kursów. 
+Mini market - buy and sell currencies.
+Crazy version - in the administration panel the possibility of including random breaks of courses.
 
 # Technologies: 
 - ES6
@@ -15,22 +15,22 @@ Wersja crazy - w panelu administracyjnym możliwość włączenia losowych zała
 
 # Features:
 
-- Logowanie / rejestracja
-- Kupowanie / sprzedawanie walut
-- Edycja profilu
-- Panel administracyjny z funkcją "crazy"
+- Login / registration
+- Buying / selling currencies
+- Editing a profile
+- Administration panel with the "crazy" function
 
 # To do:
 
-- Panel administracyjny - dodanie zarządzania użytkownikami
-- Asynchronizacja
-- Podpięcie globalnego walleta
-- Zmiana JSON-Server'a na Firebase'a
-- Ostylowanie
+- Administrative panel - adding user management
+- Async
+- Connect the global wallet
+- Change JSON-Server'a to Firebase'a
+- Style
 
 # Status
 
-W trakcie tworzenia
+The work is completed
 
 # Instalation:
 
